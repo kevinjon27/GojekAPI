@@ -11,7 +11,7 @@ from .constant import Constant
 
 from .endpoints import (
     WalletEndpointsMixin, GofoodEndpointsMixin, GopointsEndpointsMixin,
-    CustomerEndpointsMixin
+    CustomerEndpointsMixin, BookingEndpointsMixin
     )
 
 from .utils import *
@@ -23,7 +23,8 @@ from .utils import *
 logger = logging.getLogger(__name__)
 
 
-class Client(CustomerEndpointsMixin, GopointsEndpointsMixin, GofoodEndpointsMixin, WalletEndpointsMixin, object):
+class Client(BookingEndpointsMixin, CustomerEndpointsMixin, GopointsEndpointsMixin, 
+        GofoodEndpointsMixin, WalletEndpointsMixin, object):
     def __init__(self, phone_number, location, GODataPath=None, **kwargs):
         """
         :param kwargs: See below
@@ -79,7 +80,6 @@ class Client(CustomerEndpointsMixin, GopointsEndpointsMixin, GofoodEndpointsMixi
         if os.path.isfile(self.GODataPath + 'settings-'+ self.phone_number + '.dat') and \
                 (self.settings.get('customer_id') != None)  and \
                 (self.settings.get('access_token') != None):
-            self.isLoggedIn = True
             self.customer_id = self.settings.get('customer_id')
             self.token = self.settings.get('access_token')
             self.uuid = self.settings.get('uuid')
