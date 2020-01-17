@@ -2,6 +2,8 @@
 coverage.sh
 cov_html/
 
+examples/example.py
+
 venv/
 venv3/
 .vscode/
