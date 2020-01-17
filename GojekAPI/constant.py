@@ -1,6 +1,6 @@
 class Constant(object):
 
-    API_BASE_URL = "https://api.gojekapi.com/{version!s}"
+    API_BASE_URL = "https://api.gojekapi.com{version!s}"
     APP_ID = "com.go-jek.ios"
     APP_VERSION = "3.44"
     PHONE_MODEL = "Apple, iPhone12,3"

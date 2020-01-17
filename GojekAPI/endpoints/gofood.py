@@ -1,6 +1,6 @@
 class GofoodEndpointsMixin(object):
     def gofood_deals(self):
-        return self._call_api("gofood/v1/deals")
+        return self._call_api("/gofood/v1/deals")
     
     def gofood_consumer_v3_restaurants(self, collection='NEAR_ME', **kwargs):
         """
@@ -22,10 +22,10 @@ class GofoodEndpointsMixin(object):
             'source': 'SHUFFLE'
         }
         data.update(kwargs)
-        return self._call_api("gofood/consumer/v3/restaurants", params=data)
+        return self._call_api("/gofood/consumer/v3/restaurants", params=data)
 
     def gofood_filters(self):
         data = {
             'type': 'RESTAURANT_LIST'
         }
-        return self._call_api("gofood/consumer/v1/filters", params=data)
+        return self._call_api("/gofood/consumer/v1/filters", params=data)

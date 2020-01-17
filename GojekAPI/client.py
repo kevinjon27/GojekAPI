@@ -9,7 +9,7 @@ import requests
 
 from .constant import Constant
 
-from .endpoints import (WalletEndpointsMixin, GofoodEndpointsMixin)
+from .endpoints import (WalletEndpointsMixin, GofoodEndpointsMixin, GopointsEndpointsMixin)
 
 from .utils import *
 
@@ -20,7 +20,7 @@ from .utils import *
 logger = logging.getLogger(__name__)
 
 
-class Client(GofoodEndpointsMixin, WalletEndpointsMixin, object):
+class Client(GopointsEndpointsMixin, GofoodEndpointsMixin, WalletEndpointsMixin, object):
     def __init__(self, phone_number, location, GODataPath=None, **kwargs):
         """
         :param kwargs: See below
@@ -170,6 +170,9 @@ class Client(GofoodEndpointsMixin, WalletEndpointsMixin, object):
         :param method
         :return:
         """
+        if version:
+            version = '/' + version
+
         url = "{0}{1}".format(Constant.API_BASE_URL.format(version=version), endpoint)
 
 
