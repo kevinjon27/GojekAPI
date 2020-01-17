@@ -9,7 +9,10 @@ import requests
 
 from .constant import Constant
 
-from .endpoints import (WalletEndpointsMixin, GofoodEndpointsMixin, GopointsEndpointsMixin)
+from .endpoints import (
+    WalletEndpointsMixin, GofoodEndpointsMixin, GopointsEndpointsMixin,
+    CustomerEndpointsMixin
+    )
 
 from .utils import *
 
@@ -20,7 +23,7 @@ from .utils import *
 logger = logging.getLogger(__name__)
 
 
-class Client(GopointsEndpointsMixin, GofoodEndpointsMixin, WalletEndpointsMixin, object):
+class Client(CustomerEndpointsMixin, GopointsEndpointsMixin, GofoodEndpointsMixin, WalletEndpointsMixin, object):
     def __init__(self, phone_number, location, GODataPath=None, **kwargs):
         """
         :param kwargs: See below
