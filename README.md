@@ -1,4 +1,4 @@
-# Gojek Private API Boilerplate
+# Gojek Private API
 
 A Python wrapper for the Gojek Private API.
 
