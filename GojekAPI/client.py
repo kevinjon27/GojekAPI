@@ -9,7 +9,7 @@ import requests
 
 from .constant import Constant
 
-from .endpoints import (WalletEndpointsMixin)
+from .endpoints import (WalletEndpointsMixin, GofoodEndpointsMixin)
 
 from .utils import *
 
@@ -20,7 +20,7 @@ from .utils import *
 logger = logging.getLogger(__name__)
 
 
-class Client(WalletEndpointsMixin, object):
+class Client(GofoodEndpointsMixin, WalletEndpointsMixin, object):
     def __init__(self, phone_number, location, GODataPath=None, **kwargs):
         """
         :param kwargs: See below
@@ -152,9 +152,10 @@ class Client(WalletEndpointsMixin, object):
             'User-Agent': Constant.USER_AGENT,
             'X-UniqueId': self.settings.get('uuid'),
             'X-Location': self.settings.get('location'),
-            'Accept-Language': 'en-ID',
-            'X-User-Locale': 'en_ID',
+            'Accept-Language': 'id-ID', #en-ID
+            'X-User-Locale': 'id_ID', #en-ID
             'X-Platform': 'iOS',
+            'X-Location-Accuracy': Constant.LOCATION_ACCURACY,
             'X-AppVersion': Constant.APP_VERSION
         }
 

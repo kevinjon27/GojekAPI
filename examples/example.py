@@ -27,7 +27,7 @@ if __name__ == '__main__':
     # result = api.verify(otp='7431', login_token='18d41a34-3218-4306-80df-720f4fff6ca3')
     # result = api.wallet_profile()
     # result = api.wallet_profile_detailed()
-    result = api.wallet_history(page=2)
+    result = api.gofood_consumer_v3_restaurants()
     print(result)
     
 
