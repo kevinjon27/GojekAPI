@@ -23,8 +23,10 @@ if __name__ == '__main__':
 
     #  Example command:
     #  python examples/example.py
-    result = api.login_with_phone()
+    # result = api.login_with_phone()
     # result = api.verify(otp='7431', login_token='18d41a34-3218-4306-80df-720f4fff6ca3')
+    # result = api.wallet_profile()
+    result = api.wallet_profile_detailed()
     print(result)
     
 

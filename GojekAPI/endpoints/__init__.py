@@ -1,1 +1,1 @@
-from .example import ExampleEndpointsMixin
+from .wallet import WalletEndpointsMixin

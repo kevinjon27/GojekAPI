@@ -9,6 +9,8 @@ import requests
 
 from .constant import Constant
 
+from .endpoints import (WalletEndpointsMixin)
+
 from .utils import *
 
 # from .endpoints import (
@@ -18,7 +20,7 @@ from .utils import *
 logger = logging.getLogger(__name__)
 
 
-class Client(object):
+class Client(WalletEndpointsMixin, object):
     def __init__(self, phone_number, location, GODataPath=None, **kwargs):
         """
         :param kwargs: See below
@@ -172,6 +174,9 @@ class Client(object):
 
         headers = self.default_headers
         response = None
+
+        if (self.settings.get('access_token')):
+            headers['Authorization'] = 'Bearer ' + self.settings.get('access_token')
 
         if (method == 'POST'):
             response = requests.post(url, json=params, headers=headers)
